@@ -1,5 +1,6 @@
 {
     "board": "keyboardio:avr:model01",
+    "output": "out",
     "port": "COM7",
     "programmer": "AVRISP mkII",
     "sketch": "src/firmware.ino"
