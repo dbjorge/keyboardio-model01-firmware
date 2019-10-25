@@ -10,10 +10,11 @@ My Model01 firmware sketch
 1. Install system deps
     ```bash
     sudo apt update
-    sudo apt install make arduino
+    sudo apt install make
     ```
-1. Navigate to the repo
+1. Install local deps (including Arduino stuff)
     ```bash
     cd /mnt/c/repos/keyboardio-model01-firmware
+    make setup
     ```
 1. Build options are `make help`, `make build`, `make flash`

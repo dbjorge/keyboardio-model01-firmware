@@ -32,3 +32,6 @@
 *.app
 
 out/
+
+# Installed by "make setup"
+lib/arduino*
