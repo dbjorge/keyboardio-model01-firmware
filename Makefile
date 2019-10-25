@@ -3,7 +3,7 @@
 THIS_MAKEFILE_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 LIB_PATH ?= $(THIS_MAKEFILE_DIR)/lib
 BOARD_HARDWARE_PATH ?= $(LIB_PATH)/hardware
-KALEIDOSCOPE_BUILDER_DIR ?= $(BOARD_HARDWARE_PATH)/keyboardio/avr/libraries/Kaleidoscope/bin/
+KALEIDOSCOPE_BUILDER_DIR ?= $(BOARD_HARDWARE_PATH)/keyboardio/avr/libraries/Kaleidoscope/bin
 SKETCH = firmware
 
 ARDUINO_DIRNAME = arduino-1.8.8
@@ -31,4 +31,4 @@ setup:
 	fi
 
 %:
-	BOARD_HARDWARE_PATH="$(BOARD_HARDWARE_PATH)" SKETCH="$(SKETCH)" ARDUINO_PATH="$(ARDUINO_PATH)" $(KALEIDOSCOPE_BUILDER_DIR)/kaleidoscope-builder $@
+	BOARD_HARDWARE_PATH="$(BOARD_HARDWARE_PATH)" ARDUINO_PATH="$(ARDUINO_PATH)" $(KALEIDOSCOPE_BUILDER_DIR)/kaleidoscope-builder $@

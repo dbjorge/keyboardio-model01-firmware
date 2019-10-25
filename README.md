@@ -10,7 +10,7 @@ My Model01 firmware sketch
 1. Install system deps
     ```bash
     sudo apt update
-    sudo apt install make
+    sudo apt install make git
     ```
 1. Install local deps (including Arduino stuff)
     ```bash
