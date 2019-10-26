@@ -1,13 +1,11 @@
 # This is a stub makefile; all actual build logic comes from kaleidoscope-builder
 
-THIS_MAKEFILE_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-LIB_PATH ?= $(THIS_MAKEFILE_DIR)/lib
+LIB_PATH ?= ./lib
 BOARD_HARDWARE_PATH ?= $(LIB_PATH)/hardware
 KALEIDOSCOPE_BUILDER_DIR ?= $(BOARD_HARDWARE_PATH)/keyboardio/avr/libraries/Kaleidoscope/bin
-SKETCH = firmware
 
-ARDUINO_DIRNAME = arduino-1.8.8
-ARDUINO_FILENAME = $(ARDUINO_DIRNAME)-linux64.tar.xz
+ARDUINO_DIRNAME = arduino-1.8.10
+ARDUINO_FILENAME = $(ARDUINO_DIRNAME)-windows.zip
 ARDUINO_FILEPATH = $(LIB_PATH)/$(ARDUINO_FILENAME)
 ARDUINO_PATH ?= $(LIB_PATH)/$(ARDUINO_DIRNAME)
 ARDUINO_DOWNLOAD_URL = http://downloads.arduino.cc/$(ARDUINO_FILENAME)
@@ -19,7 +17,10 @@ $(info *************************************************************************
 $(info )
 endif
 
-.PHONY: setup
+.PHONY: clean setup
+
+clean:
+	rm -rf out tmp
 
 setup:
 	@if [ ! -d "$(ARDUINO_PATH)" ]; then \
@@ -27,7 +28,8 @@ setup:
 		wget -O "$(ARDUINO_FILEPATH)" -c $(ARDUINO_DOWNLOAD_URL); \
 		wget -O "$(ARDUINO_FILEPATH)" -c $(ARDUINO_DOWNLOAD_URL); \
 		echo "Extracting to \"$(ARDUINO_PATH)\"..."; \
-		tar xf $(ARDUINO_FILEPATH) -C $(LIB_PATH); \
+		unzip $(ARDUINO_FILEPATH) -d $(LIB_PATH); \
+		chmod -R 0755 $(ARDUINO_PATH) \
 	fi
 
 %:
